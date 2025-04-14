@@ -9,9 +9,10 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     if (nameInput.value === "") {
-        alert("Por favor, preencha o seu nome");
+        alert("Nome não foi informado");
         return;
     }
+    
     if (emailInput.value === "" || !isEmailValid(emailInput.value)) {
         alert("Por favor, preencha o seu email");
         return;
@@ -23,14 +24,14 @@ form.addEventListener("submit", (event) => {
     }
 
     form.submit();
-});
 
+});
 function isEmailValid(email) {
     const emailRegex = new RegExp(
         /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/
     )
 
-    if (emailRegex.text(email)) {
+    if (emailRegex.test(email)) {
         return true;
     }
     return false;
