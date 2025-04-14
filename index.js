@@ -13,9 +13,15 @@ form.addEventListener("submit", (event) => {
         return;
     }
     if (emailInput.value === "" || !isEmailValid(emailInput.value)) {
-        alert("Por favor, preencha o seu nome");
+        alert("Por favor, preencha o seu email");
         return;
     }
+
+    if (!validatePassword(password.value)) {
+        alert("A senha precisa ser no mínimo 8 dígitos.");
+        return;
+    }
+
     form.submit();
 });
 
@@ -24,8 +30,16 @@ function isEmailValid(email) {
         /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/
     )
 
-    if(emailRegex.text(email)) {
-        return true ;
+    if (emailRegex.text(email)) {
+        return true;
     }
     return false;
+}
+
+function validatePassword(password, minDigits) {
+    if (password.lenght >= minDigits) {
+        return true
+    }
+
+    return false
 }
