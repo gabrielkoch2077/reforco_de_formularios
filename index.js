@@ -15,7 +15,7 @@ form.addEventListener("submit", (event) => {
     if (emailInput.value === "" || !isEmailValid(emailInput.value)) {
         alert("Por favor, preencha o seu nome");
         return;
-
+    }
     form.submit();
 });
 
