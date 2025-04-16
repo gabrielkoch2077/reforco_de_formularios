@@ -1,5 +1,6 @@
 const form = document.querySelector("#form");
 const nameInput = document.querySelector("#name");
+const surnameInput = document.querySelector("surname");
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 const genderSelect = document.querySelector("#sex");
@@ -13,9 +14,9 @@ form.addEventListener("submit", (event) => {
         return;
     }
 
-    function isEmailValid(email) {
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        return emailRegex.test(email);
+    if (surnameInput.value === "") {
+        alert("Sobrenome não foi informado");
+        return;
     }
     
     if (!validatePassword(passwordInput.value)) {
@@ -23,6 +24,14 @@ form.addEventListener("submit", (event) => {
         return;
     }
     
+    if (emailInput.value === "" || !isEmailValid(emailInput.value)) {
+        alert("Por favor, preencha o seu email");
+        return;
+
+    function isEmailValid(email) {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(email);
+    }
     
     function validatePassword(password) {
        
@@ -53,8 +62,6 @@ form.addEventListener("submit", (event) => {
         return true;
     }
 
-    form.submit();
-
 });
 
 function validatePassword(password, minDigits) {
@@ -70,7 +77,9 @@ if(genderSelect.value ===""){
     return;
 }
 
-if (emailInput.value === "" || !isEmailValid(emailInput.value)) {
-    alert("Por favor, preencha o seu email");
+if messageTextarea.value === "" ) {
+    alert("Por favor, escreva alguma mensagem na caixa de texto");
     return;
 }
+
+form.submit();
